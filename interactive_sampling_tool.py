@@ -54,16 +54,27 @@ if 'TrainField' not in st.session_state:
     st.session_state.TrainField = None
 
 # --- Configuration: File Paths
-LULC_CLASSES_CSV = r"C:/Users/fmahezs/epistem/modules_notebook/data/lc_pedamaran.csv"  # CSV with columns: ID, LULC_Type, color_palette
+LULC_CLASSES_CSV = r"./data/lc_pedamaran.csv"  # CSV with columns: ID, LULC_Type, color_palette
 # Training data (optional) 
 TRAINING_DATA_SHP = None
-# TRAINING_DATA_SHP = r"C:/Users/fmahezs/epistem/modules_notebook/data/Pedamaran_sample.shp"
-AOI_SHAPEFILE = r"C:/Users/fmahezs/epistem/modules_notebook/data/aoi_pedam.shp"  
-GEOTIFF_FILE = r"C:/Users/fmahezs/epistem/modules_notebook/data/mosaic_aoi_pedam2020_truecolors.tif"
+TRAINING_DATA_SHP_PATH = r"./data/Pedamaran_sample.shp"
+AOI_SHAPEFILE = r"./data/aoi_pedam.shp"  
+GEOTIFF_FILE = r"./data/mosaic_aoi_pedam2020_truecolors.tif"
 TRAINING_CLASS_FIELD = "LULC_Type" 
 
 st.markdown("---")
 st.subheader("Configuration")
+
+# User control: enable/disable loading training shapefile
+use_training_shp = st.checkbox(
+    label=f"Load training shapefile ({os.path.basename(TRAINING_DATA_SHP_PATH)})",
+    value=False,
+    help="Check to load the existing training shapefile from the data folder"
+)
+if use_training_shp:
+    TRAINING_DATA_SHP = TRAINING_DATA_SHP_PATH
+else:
+    TRAINING_DATA_SHP = None
 
 # Check mandatory files first
 mandatory_files_missing = []
