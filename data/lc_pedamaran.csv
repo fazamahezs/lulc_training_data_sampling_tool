@@ -1,7 +1,6 @@
-﻿ID,LULC_Type,color_palette
-10,oilPalmMonoculture,#A64CE8
-9,rubberMonoculture,#1FB279
-17,waterbody,#FFA638
-15,settlement,#3A86FF
-13,shrub,#EA1744
-12,grassAndSavanna,#7ED957
+ID,LULC_Type,color_palette
+1,Urban/Built-up,#FF0000
+2,Agriculture,#FFA500
+3,Forest,#008000
+4,Water,#0000FF
+5,Wetlands,#800080
